@@ -56,11 +56,15 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                       }
 
                       if (!value.contains('@')) {
-                        return 'El correo no es válido';
+                        return 'El correo no contiene un @';
                       }
                        if (!value.endsWith('unah.hn')) {
-                        return 'El correo no es válido';
+                        return 'El correo tiene que terminar en unah.hn';
                       }
+                      if (value.allMatches('@').length != 1) {
+                        return 'El correo tiene mas de una @ ';
+                      }
+                      
 
 
                       return null;
@@ -83,10 +87,10 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                         return 'El teléfono no es válido';
                       }
                        if (!value.startsWith('3')&&!value.startsWith('9') ) {
-                        return 'El numero no es válido';
+                        return 'El telefono debe iniciar con un 3 o 9';
                       }
                       if (value.length < 8) {
-                        return 'El numero no es válido';
+                        return 'El numero no contiene 8 digitos';
                       }
 
                       return null;
@@ -106,6 +110,17 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                       if (value == null || value.isEmpty) {
                         return 'La contraseña es obligatorio';
                       }
+                      if (value.length < 8) {
+                        return 'La contraseña tiene un minimo de 8 letras';
+                      }
+                        if(!_mayuscula(value)){
+                        return 'La contraseña necesita al menos una letra mayúscula';
+                      }
+                      if(!_caracterEspecial(value)){
+                        return 'La contraseña necesita al menos un caracter especial';
+                      }
+
+
                       return null;
                     },
                   ),CuntomInput(
@@ -122,6 +137,7 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                       if (value != contraseniaController.text) {
                         return 'Las contraseñas no coinciden';
                       } 
+                  
                       return null;
                     },
                   ),
@@ -157,3 +173,14 @@ final TextEditingController contrasenia2Controller = TextEditingController();
        );
   }
 }
+bool _mayuscula(String value) {
+  // Expresión regular para verificar que haya al menos una letra mayúscula
+  final RegExp upperCaseRegex = RegExp(r'[A-Z]');
+  return upperCaseRegex.hasMatch(value);
+}
+
+bool _caracterEspecial(String value) {
+    // Expresión regular para verificar que haya al menos un carácter especial
+    final RegExp specialCharRegex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
+    return specialCharRegex.hasMatch(value);
+  }

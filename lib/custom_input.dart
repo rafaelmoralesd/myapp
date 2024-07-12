@@ -48,7 +48,7 @@ class CuntomInput extends StatelessWidget {
         ),
        
         border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(40)),
         ),
         icon: Icon(icon),
         label: Text(label),
