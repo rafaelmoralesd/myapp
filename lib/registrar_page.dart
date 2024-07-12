@@ -73,13 +73,17 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                         return 'El numero es obligatorio';
                       }
 
-                      if (int.tryParse(value) == null ||
-                          !value.startsWith('9')) {
+                      if (int.tryParse(value) == null 
+                          ) {
                         return 'El teléfono no es válido';
                       }
-                       if (!value.startsWith('3')) {
+                       if (!value.startsWith('3')&&!value.startsWith('9') ) {
                         return 'El numero no es válido';
                       }
+                      if (value.length < 8) {
+                        return 'El numero no es válido';
+                      }
+
                       return null;
                     },
                   ),
