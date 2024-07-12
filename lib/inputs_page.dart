@@ -30,9 +30,12 @@ class InputsPage extends StatelessWidget {
                   maxLength: 50,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'La contraseña es obligatorio';
+                      return 'El correo es obligatorio';
                     }
                     if (!value.contains('@')) {
+                      return 'El correo no es válido';
+                    }
+                    if (value != 'rmoralesd@unah.hn') {
                       return 'El correo no es válido';
                     }
 
@@ -50,6 +53,9 @@ class InputsPage extends StatelessWidget {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'La contraseña es obligatorio';
+                    }
+                    if(value != '20202001873'){
+                      return 'La contraseña no es válida';
                     }
                     return null;
                   },
