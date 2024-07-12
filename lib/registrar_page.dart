@@ -11,7 +11,7 @@ class RegistrarPage extends StatelessWidget {
   final TextEditingController telefonoController = TextEditingController();
   final TextEditingController contraseniaController = TextEditingController();
 final TextEditingController contrasenia2Controller = TextEditingController();
-  // equivalente al controller del formulario
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -30,12 +30,17 @@ final TextEditingController contrasenia2Controller = TextEditingController();
                   CuntomInput(
                     label: 'Nombre',
                     maxLength: 10,
-                    minLength: 3,
+                    
+                    
                     controller: nombreController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'El nombre es obligatorio';
                       }
+                      if (value.length < 3) {
+                        return 'El nombre tiene un minimo de 3 letras';
+                      }
+
                       return null;
                     },
                   ),

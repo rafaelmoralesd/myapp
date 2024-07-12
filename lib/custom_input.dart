@@ -12,6 +12,7 @@ class CuntomInput extends StatelessWidget {
     this.errorText,
     this.keyboardType = TextInputType.text,
     required this.validator,
+    
   });
 
   final String label;
@@ -34,14 +35,10 @@ class CuntomInput extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: 'Ingrese su $label',
-        // prefix: Icon(Icons.person),
-        // error: Icon(Icons.error),
-        // errorText: errorText,
-        //? InkResponse, Inkwel, GestureDetector => proporcionan interactividad con
-        //? cualquier widget que no tenga posibilidad de detectar eventos
+        
         suffix: InkResponse(
           splashColor: Colors.teal[50],
-          // muestra un efecto de Ripple
+        
           onTap: () {
             print('Mostrar contraseña');
           },
@@ -49,7 +46,7 @@ class CuntomInput extends StatelessWidget {
             Icons.remove_red_eye,
           ),
         ),
-        //  como hago para darle funcionalidad?
+       
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
@@ -58,7 +55,7 @@ class CuntomInput extends StatelessWidget {
       ),
       maxLength: maxLength,
 
-      // maxLines: 3, // Textarea
+     
     );
   }
 }
